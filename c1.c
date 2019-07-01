@@ -1,28 +1,24 @@
 #include <stdio.h>
 
-int 
-main() 
+int
+main()
 {
-    int i;
+	int 		i;
 
-    printf("+");
-    for (i = 0; i < 23; i++)
-        printf("-");
-    printf("+\n");
+	printf("+");
+	for (i = 0; i < 23; i++)
+		printf("-");
+	printf("+\n");
 
-    for (i = 0; i < 3; i++)
-        printf("| o | X | o | X | o | X |");
-        printf("\n");
-        printf("| X | o | X | o | X | o |");
-        printf("\n");
+	for (i = 0; i < 3; i++) {
+		printf("| o | X | o | X | o | X |\n");
+		printf("| X | o | X | o | X | o |\n");
+	}
 
-    printf("+");
-    for (i = 0; i < 23; i++)
-        printf("-");
-    printf("+");
+	printf("+");
+	for (i = 0; i < 23; i++)
+		printf("-");
+	printf("+\n");
 
-    return(0);
+	return 0;
 }
-
-
-
