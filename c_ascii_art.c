@@ -1,32 +1,5 @@
 #include <stdio.h>
 
-/*
-Examples
-Input
-
-#
-
-Output
-
-++++#++++
-+++###+++
-++#####++
-+#######+
-#########
-
-Input
-
-o
-
-Output
-
-++++o++++
-+++ooo+++
-++ooooo++
-+ooooooo+
-ooooooooo
-*/
-
 int main()
 {
 	char	c;
