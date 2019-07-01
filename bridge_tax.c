@@ -2,7 +2,7 @@
 
 int main() 
 {
-	int	n1, n2, sum, fee;
+	int	n1, n2, sum;
 
 	scanf("%d%d", &n1, &n2);
 
