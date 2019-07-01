@@ -24,24 +24,28 @@ bs(char word[])
 int
 main()
 {
-	int	i, repeats;
+	int	l, i, repeats;
 	char	word[51];
-	char	prev;
 
 	scanf("%s", word);
+	
+	l=0;
+	while (word[l] != '\0')
+		l++;
+
 	bs(word);
 
-	i = 1;
 	repeats = 0;
-	prev = word[0];
-	while (word[i] != '\0') {
-		if (prev == word[i])
+	for (i=0; i<l-1; i++) {
+		if (word[i] == word[i+1]) {
+			i++;
 			repeats++;
-		prev = word[i];
-		i++;
+			while (word[i] == word[i+1]) 
+				i++;
+		}
+
 	}
 	printf("%d\n", repeats);
-
 	return 0;
 }
 
