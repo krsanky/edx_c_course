@@ -3,20 +3,17 @@
 int
 main()
 {
-	int	guess, target, tries;
-	tries = 0;
-	guess = -1;
-	scanf("%d", &target);
-	while (guess != target) {
-		scanf("%d", &guess);
-		tries++;
-		if (target > guess)
-			printf("it is more\n");	
-		if (target < guess)
-			printf("it is less\n");	
+	int	min, max, t;
+	scanf("%d%d", &min, &max);
+	t = 0;
+	while (t != -999) {
+		scanf("%d", &t);
+		if ((t < min) || (t > max)) {
+			printf("Alert!\n");
+			break;
+		}
+		printf("Nothing to report\n");
 	}
-	printf("Number of tries needed:\n");
-	printf("%d\n", tries);
 
 	return 0;
 }
