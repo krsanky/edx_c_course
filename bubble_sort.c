@@ -16,15 +16,17 @@ main()
 		759, 14, 2, 900, 106, 77, -10, 8, -3, 5
 	};
 	int 		n = 10;
-	int		i, swap;
+	int		i, j, swap;
 
 	print_arr(list, n);
 
-	for (i=0; i<n-1; i++) {
-		if (list[i] > list[i+1]) {
-			swap = list[i];
-			list[i] = list[i+1];
-			list[i+1] = swap;
+	for (j=0; j<n-1; j++) {
+		for (i=0; i<n-1; i++) {
+			if (list[i] > list[i+1]) {
+				swap = list[i];
+				list[i] = list[i+1];
+				list[i+1] = swap;
+			}
 		}
 	}
 
