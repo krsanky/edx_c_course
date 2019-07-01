@@ -9,7 +9,7 @@ int main()
 		printf("Tinuviel\n");
 	else if ((ht >= 10) && (nl >=10))
 		printf("Calaelen\n");
-	else if ((ht <= 8) && (nl >= 5))
+	else if ((ht <= 8) && (nl <= 5))
 		printf("Falarion\n");
 	else if ((ht >= 12) && (nl <= 7))
 		printf("Dorthonion\n");
