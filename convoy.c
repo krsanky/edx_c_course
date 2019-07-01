@@ -13,7 +13,12 @@ int main()
 		wts[i] = wt;
 	}
 	avg = total / (double)ncars;
-	printf("ncars:%d total-wt:%lf avg:%lf\n", ncars, total, avg);
+	//printf("ncars:%d total-wt:%lf avg:%lf\n", ncars, total, avg);
+
+	for (i=0; i<ncars; i++) {
+		printf("%.1lf\n", -(wts[i] - avg));
+	}
+
 	return 0;
 }
 
