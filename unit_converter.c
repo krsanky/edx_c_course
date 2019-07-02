@@ -1,27 +1,53 @@
 #include <stdio.h>
 
-/*
-Here are the conversion rules to use:
-1 meter = 3.2808 feet;
-1 gram = 0.002205 pounds;
-temperature in degrees Fahrenheit = 32 + 1.8 * temperature in degrees Celsius.
-*/
+void
+m2feet(double m)
+{
+	printf("%.6lf ft\n", m * 3.2808);
+}
+
+void
+g2lbs(double g)
+{
+	printf("%.6lf lbs\n", g * 0.002205);
+}
+
+void
+cel2far(double c)
+{
+	printf("%.6lf f\n", 32 + 1.8 * c);
+}
 
 int
 main()
 {
-	int	i, num_conv;
+	int	i, nconv;
+	double	val;
 	char	unit;
-	double	value;
 
-	scanf("%d", &num_conv);
-	printf("num conversions:%d\n", num_conv);
+	scanf("%d", &nconv);
 
-	for (i=0; i<num_conv; i++) {
-		scanf("%lf%c", &value, &unit);
-		//printf("convert %lf of type %c\n", value, unit);
-		printf("asd\n");
+	for (i=0; i<nconv; i++) {
+		scanf("%lf %c", &val, &unit);
+		//printf("%lf %c\n", val, unit);
+		switch (unit) {
+		case 'm':
+			m2feet(val);
+			break;
+		case 'g':
+			g2lbs(val);
+			break;
+		case 'c':
+			cel2far(val);
+			break;
+		default:
+			printf("not handled\n");
+		}
+			
 	}
-
+	
 	return 0;
 }
+
+
+
