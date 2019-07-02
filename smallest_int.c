@@ -8,6 +8,7 @@ int main()
 	int	val;
 	scanf("%d", &nvals);
 	run1 = 1;
+	min_ = 9000;
 	for (i=0; i<nvals; i++) {
 		scanf("%d", &val);
 		if (run1) {
@@ -24,7 +25,10 @@ int main()
 int
 min(int n1, int n2)
 {
+	int	ret;
 	if (n1 < n2)
-		return n1;
-	return n2;
+		ret = n1;
+	else
+		ret = n2;
+	return ret;
 }
