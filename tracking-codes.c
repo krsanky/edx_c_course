@@ -5,26 +5,29 @@ int main()
 {
 	int	i, ncodes;
 	int	codel;
-	char	codet; // i d c
+	char	codet;
+	int	total_bytes;
 
 	scanf("%d", &ncodes);
+	total_bytes = 0;
 	for (i=0; i<ncodes; i++) {
 		scanf("%d %c", &codel, &codet);
 		switch (codet) {
 		case 'i':
-			printf("i\n");
+			total_bytes += 4 * codel;
 			break;
 		case 'd':
-			printf("d\n");
+			total_bytes += 8 * codel;
 			break;
 		case 'c':
-			printf("c\n");
+			total_bytes += 1 * codel;
 			break;
 		default:
 			printf("Invalid tracking code type\n");
 			exit(1);
 		}
 	}
+	printf("%d bytes\n", total_bytes);
 
 	return 0;
 }
