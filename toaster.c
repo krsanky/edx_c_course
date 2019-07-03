@@ -7,8 +7,9 @@ main()
 	char	type;
 	int	per;
 	int	total;
+	int	tmp;
+
 	scanf(" %c %d", &type, &amt);		
-	printf("type:%c amt:%d\n", type, amt);		
 
 	switch (type) {
 	case 'i':
@@ -24,9 +25,19 @@ main()
 		per = sizeof(double);
 		break;
 	}
-	printf("per:%d\n", per);
 	total = amt * per;
-	printf("total:%d\n", total);
+
+	if (total >= 1000000) {
+		tmp = total / 1000000;
+		printf("%d MB and ", tmp);
+		total = total % 1000000;
+	}
+	if (total >= 1000) {
+		tmp = total / 1000;
+		printf("%d KB and ", tmp);
+		total = total % 1000;
+	}
+	printf("%d B\n", total);
 
 	return 0;
 }
