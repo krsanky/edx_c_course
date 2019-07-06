@@ -19,7 +19,7 @@ main(void)
 	pts = (struct point *)malloc(sizeof(struct point) * N);	
 	initializePoly(pts, N);
 	printPoly(pts, N);
-
+	free(pts);
 }
 
 void 
