@@ -13,8 +13,9 @@ void 		freeNumber(struct digit * start);
 int 		divisibleByThree(struct digit * start);
 struct digit   *readNumber(void);
 /* Add your own function prototypes here */
+int 		changeThrees(struct digit *);
 
-int 
+int
 main(void)
 {
 	struct digit   *start;
@@ -48,7 +49,7 @@ append(struct digit * end, struct digit * newDigptr)
 	return (end->next);
 }
 
-void 
+void
 printNumber(struct digit * start)
 {
 	struct digit   *ptr = start;
@@ -59,7 +60,7 @@ printNumber(struct digit * start)
 	printf("\n");
 }
 
-void 
+void
 freeNumber(struct digit * start)
 {
 	struct digit   *ptr = start;
@@ -93,7 +94,7 @@ readNumber(void)
 	return (start);
 }
 
-int 
+int
 divisibleByThree(struct digit * start)
 {
 	struct digit   *ptr = start;
@@ -109,3 +110,19 @@ divisibleByThree(struct digit * start)
 }
 
 /* Write your changeThrees() function here */
+int
+changeThrees(struct digit * ds)
+{
+	int 		num_changed;
+	struct digit	*d;
+	d = ds;
+	num_changed = 0;
+	while (d != NULL) {
+		if (d->num == 3) {
+			d->num = 9;
+			num_changed++;
+		}
+		d = d->next;
+	}
+	return num_changed;
+}
