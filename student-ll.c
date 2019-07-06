@@ -71,5 +71,14 @@ printStudents(struct student * start)
 void
 freeStudents(struct student * start)
 {
-
+	struct student	*s, *n;
+	s = start;
+	while (s != NULL) {
+		n = s->next;
+		free(s);
+		s = n;
+	}
 }
+
+
+
