@@ -8,24 +8,68 @@ struct student {
 	struct student *next;
 };
 
-int
-main()
+struct student *createStudent(char studentName[], int studentAge);
+struct student *append(struct student * end, struct student * newStudptr);
+void 		printStudents(struct student * start);
+void 		freeStudents(struct student * start);
+/* add any other prototypes as needed */
+
+int 
+main(void)
 {
-	struct student *s1, *s2;
-	s1 = (struct student *) malloc(sizeof(struct student));
-	s2 = (struct student *) malloc(sizeof(struct student));
+	struct student *start, *newStudptr, *end;
+	int 		ageP     , ageR, ageM;
 
-	strcpy(s1->name, "asdasd");
-	s1->age = 12;
-	printf("%s is %d years old.\n", s1->name, s1->age);
+	scanf("%d %d %d", &ageP, &ageR, &ageM);
 
+	start = createStudent("Petra", ageP);
+	end = start;
+	newStudptr = createStudent("Remi", ageR);
+	end = append(end, newStudptr);
+	newStudptr = createStudent("Mike", ageM);
+	end = append(end, newStudptr);
 
-	strcpy(s2->name, "22asdasd");
-	s2->age = 42;
-	s1->next = s2;
-	printf("%s is %d years old.\n", s1->next->name, s1->next->age);
+	printStudents(start);
+	freeStudents(start);
 
-	free(s1);
-	free(s2);
 	return 0;
+}
+
+/*
+ * Place your function definitions here. Be sure to include the definitions
+ * for createStudent(), append(), printStudents() as well as any other
+ * functions you created for the previous tasks.
+ */
+struct student *
+createStudent(char studentName[], int studentAge)
+{
+	struct student *s;
+	s = (struct student *) malloc(sizeof(struct student));
+	strcpy(s->name, studentName);
+	s->age = studentAge;
+	return s;
+}
+
+struct student *
+append(struct student * end, struct student * newStudptr)
+{
+	end->next = newStudptr;
+	return newStudptr;
+}
+
+void
+printStudents(struct student * start)
+{
+	struct student *s;
+	s = start;
+	while (s != NULL) {
+		printf("%s is %d years old.\n", s->name, s->age);
+		s = s->next;
+	}
+}
+
+void
+freeStudents(struct student * start)
+{
+
 }
