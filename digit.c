@@ -14,6 +14,7 @@ void 		freeNumber(struct digit *);
 struct digit   *readNumber(void);
 int 		divisibleByThree(struct digit * start);
 int 		changeThrees(struct digit * start);
+int		countRedun(struct digit *);
 
 int 
 main(void)
@@ -123,3 +124,25 @@ changeThrees(struct digit * start)
 }
 
 /* Write your countRedun() function here */
+int
+countRedun(struct digit *ds)
+{
+	struct digit	*d;
+	int	rcount, i, reduns[10]; 
+
+	rcount = 0;
+	for (i=0; i<10; i++)
+		reduns[i] = -1;
+	d = ds;
+	while (d != NULL) {
+		reduns[d->num - 1]++;	
+		d = d->next;
+	}	
+	for (i=0; i<10; i++) 
+		if (reduns[i] > 0)
+			rcount += reduns[i];
+	
+	return rcount;
+}
+
+
