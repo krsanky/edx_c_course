@@ -135,7 +135,7 @@ countRedun(struct digit *ds)
 		reduns[i] = -1;
 	d = ds;
 	while (d != NULL) {
-		reduns[d->num - 1]++;	
+		reduns[d->num]++;	
 		d = d->next;
 	}	
 	for (i=0; i<10; i++) 
