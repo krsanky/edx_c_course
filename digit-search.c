@@ -6,26 +6,28 @@ struct digit {
 	struct digit   *next;
 };
 
-/* Write your prototypes here */
-struct digit   *createDigit(int);
-struct digit   *append(struct digit *, struct digit *);
-void 		printNumber(struct digit *);
-void 		freeNumber(struct digit *);
-struct digit   *readNumber();
-int 		divisibleByThree(struct digit *);
+struct digit   *createDigit(int dig);
+struct digit   *append(struct digit * end, struct digit * newDigptr);
+void 		printNumber(struct digit * start);
+void 		freeNumber(struct digit * start);
+int 		divisibleByThree(struct digit * start);
+struct digit   *readNumber(void);
+/* Add your own function prototypes here */
 
-int
+int 
 main(void)
 {
 	struct digit   *start;
 	start = readNumber();
+
 	printf("The number ");
 	printNumber(start);
-	if (divisibleByThree(start))
-		printf("is divisible by 3.\n");
-	else
-		printf("is not divisible by 3.\n");
+	printf("was modified in %d places.\n", changeThrees(start));
+
+	printf("The new number is ");
+	printNumber(start);
 	freeNumber(start);
+
 	return 0;
 }
 
@@ -46,7 +48,7 @@ append(struct digit * end, struct digit * newDigptr)
 	return (end->next);
 }
 
-void
+void 
 printNumber(struct digit * start)
 {
 	struct digit   *ptr = start;
@@ -57,7 +59,7 @@ printNumber(struct digit * start)
 	printf("\n");
 }
 
-void
+void 
 freeNumber(struct digit * start)
 {
 	struct digit   *ptr = start;
@@ -91,35 +93,19 @@ readNumber(void)
 	return (start);
 }
 
-/* Write your divisibleByThree() function here */
-int
-divisibleByThree(struct digit * d)
+int 
+divisibleByThree(struct digit * start)
 {
-	int	wholed, mod, len;
-	struct digit	*tmpd;
-	
-	len = 0;
-	tmpd = d;
-	mod = 10;
-	while (tmpd != NULL) {
-		tmpd = tmpd->next;
-		len++;
-		mod = mod * 10;
+	struct digit   *ptr = start;
+	int 		qsum = 0;
+	while (ptr != NULL) {
+		qsum += ptr->num;
+		ptr = ptr->next;
 	}
-	mod = mod / 100;
-/*	printf("%d is len mod:%d\n", len, mod);*/
-
-	wholed = 0;
-	tmpd = d;
-	while (tmpd != NULL) {
-		wholed += mod * tmpd->num;
-		tmpd = tmpd->next;
-		mod = mod / 10;
-	}
-/*	printf("wholed:%d\n", wholed);*/
-
-	return ((wholed % 3) == 0);
+	if (qsum % 3 == 0)
+		return 1;
+	else
+		return 0;
 }
 
-
-
+/* Write your changeThrees() function here */
