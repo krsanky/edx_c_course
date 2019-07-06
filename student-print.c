@@ -67,10 +67,10 @@ printStudents(struct student *start)
 {
 	struct student	*s;
 	s = start;
-	do {
+	while (s != NULL) {
 		printf("%s is %d years old.\n", s->name, s->age);
 		s = s->next;
-	} while (s->next != NULL);
+	}
 }
 
 
