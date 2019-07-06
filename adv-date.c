@@ -51,6 +51,17 @@ advanceDay(struct date d) {
 	newd->year = d.year;
 	newd->day = d.day;
 	newd->month = d.month;
+	
+	newd->day += 1;
+	if (newd->day > monthMax(newd->month)) {
+		newd->day = 1;
+		newd->month += 1;
+		if (newd->month > 12) {
+			newd->month = 1;
+			newd->year += 1;
+		}
+	}
+
 	return *newd;    
 }
 
@@ -61,7 +72,7 @@ void readDate(struct date * d)
 
 void printDate(struct date d)
 {
-    printf("%d/%02d/%d\n", d.month, d.day, d.year);
+    printf("%02d/%02d/%d\n", d.month, d.day, d.year);
     
 }
 
