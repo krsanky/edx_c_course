@@ -95,5 +95,31 @@ readNumber(void)
 int
 divisibleByThree(struct digit * d)
 {
-	return 0;
+	int	wholed, mod, len;
+	struct digit	*tmpd;
+	
+	len = 0;
+	tmpd = d;
+	mod = 10;
+	while (tmpd != NULL) {
+		tmpd = tmpd->next;
+		len++;
+		mod = mod * 10;
+	}
+	mod = mod / 100;
+/*	printf("%d is len mod:%d\n", len, mod);*/
+
+	wholed = 0;
+	tmpd = d;
+	while (tmpd != NULL) {
+		wholed += mod * tmpd->num;
+		tmpd = tmpd->next;
+		mod = mod / 10;
+	}
+/*	printf("wholed:%d\n", wholed);*/
+
+	return ((wholed % 3) == 0);
 }
+
+
+
