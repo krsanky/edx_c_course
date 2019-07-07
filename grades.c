@@ -4,17 +4,19 @@ int
 main()
 {
 	int	i, numg;
-	int	grade;
+	int	total, grade;
 	FILE	*f;
+	double	avg;
 
 	f = fopen("studentGrades.txt", "r");
 	fscanf(f, "%d", &numg);
-	printf("%d grades\n", numg); 
+	total = 0;
 	for (i=0; i<numg; i++) {
 		fscanf(f, "%d", &grade);
-		printf("grade:%d\n", grade);
+		total += grade;
 	}
-
+	avg = (double)total / (double)numg;
+	printf("%.2lf\n", avg);
 	fclose(f);
 	return 0;
 }
