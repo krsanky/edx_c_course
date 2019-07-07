@@ -3,20 +3,29 @@
 int
 main()
 {
-	int	i, numg;
-	int	total, grade;
 	FILE	*f;
-	double	avg;
+	double	my_gr, gr;
+	int	i, run1, hgf;
 
-	f = fopen("studentGrades.txt", "r");
-	fscanf(f, "%d", &numg);
-	total = 0;
-	for (i=0; i<numg; i++) {
-		fscanf(f, "%d", &grade);
-		total += grade;
+	f = fopen("gradeComparison.txt", "r");
+	run1 = 1;
+	i = 0;
+	hgf = 0;
+	while (fscanf(f, "%lf", &gr) != EOF) {
+		i++;
+		if (run1) {
+			my_gr = gr;
+			run1 = 0;
+			continue;
+		}
+		if (gr > my_gr) {
+			printf("No %d\n", i);	
+			hgf++;
+			break;
+		}
 	}
-	avg = (double)total / (double)numg;
-	printf("%.2lf\n", avg);
+	if (!hgf)
+		printf("Yes\n");
 	fclose(f);
 	return 0;
 }
