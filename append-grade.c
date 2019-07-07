@@ -16,7 +16,7 @@ main()
 
 	if (gr != check_gr) {
 		f = fopen(fn, "a");
-		fprintf(f, "%d", check_gr);
+		fprintf(f, " %d", check_gr);
 		fclose(f);
 	}
 	
